@@ -1,5 +1,4 @@
 var spawn = require('child_process').spawn;
-var _ = require('underscore');
 var fs = require('fs');
 var os = require('os');
 var path = require('path');
@@ -116,9 +115,9 @@ module.exports = function(opts, callback){
 	var location = opts.location;
 	if(!location) location = path.join(os.tmpdir(),'id_rsa');
 
-	if(_.isUndefined(opts.read)) opts.read = true;
-	if(_.isUndefined(opts.force)) opts.force = true;
-	if(_.isUndefined(opts.destroy)) opts.destroy = false;
+	if(opts.read === undefined) opts.read = true;
+	if(opts.force === undefined) opts.force = true;
+	if(opts.destroy === undefined) opts.destroy = false;
 
 	checkAvailability(location, opts.force, function(err){
 		if(err){
